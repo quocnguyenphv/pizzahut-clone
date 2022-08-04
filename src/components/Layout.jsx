@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   mainContainer: {
     maxWidth: "960px",
     minHeight: "85vh",
+    [theme.breakpoints.down("sm")]: {
+      padding: 0,
+    },
   },
 }));
 
