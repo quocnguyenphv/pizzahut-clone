@@ -4,8 +4,16 @@ import { Box, Grid, Paper, Typography } from "@material-ui/core";
 import CouponCard from "../components/CouponCard";
 
 const useStyles = makeStyles((theme) => ({
+  pageWrapper: {
+    paddingTop: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: 0,
+    },
+  },
   contentWrapper: {
     minHeight: "70vh",
+    display: "flex",
+    flexDirection: "column",
   },
   headerImage: {
     width: "100%",
@@ -33,13 +41,24 @@ const useStyles = makeStyles((theme) => ({
   headerSecondaryText: {
     fontSize: "14px",
   },
+  notificationBox: {
+    display: "none",
+    // display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  },
+  notificationText: {
+    backgroundColor: " #E9EBEE",
+    borderRadius: "5px",
+  },
 }));
 
 const Coupon = () => {
   const classes = useStyles();
 
   return (
-    <Box style={{ paddingTop: "2rem" }}>
+    <Box className={classes.pageWrapper}>
       <Paper className={classes.contentWrapper}>
         <img
           src="https://cdn.pizzahut.vn/images/Web_V3/Member/3054x201.jpg"
@@ -83,7 +102,14 @@ const Coupon = () => {
           <Grid item xs={12} sm={5}>
             <CouponCard />
           </Grid>
+          {/* empty grid to align card to the left when only 1 card on a line*/}
+          <Grid item xs={12} sm={5}></Grid>
         </Grid>
+        <Box className={classes.notificationBox}>
+          <Typography variant="h6" className={classes.notificationText}>
+            Bạn hiện không có phiếu ưu đãi nào!
+          </Typography>
+        </Box>
       </Paper>
     </Box>
   );

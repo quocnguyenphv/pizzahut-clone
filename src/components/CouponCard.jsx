@@ -7,8 +7,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import React from "react";
+import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import CouponDetail from "./CouponDetail";
 
 const useStyles = makeStyles((theme) => ({
   useCouponButton: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CouponCard = () => {
   const classes = useStyles();
+  const [openDetail, setOpenDetail] = useState(false);
   return (
     <div>
       <Paper
@@ -84,6 +86,7 @@ const CouponCard = () => {
             style={{
               color: "#0A8020",
             }}
+            onClick={() => setOpenDetail(true)}
           >
             <ArrowForwardIosIcon fontSize="small" />
           </IconButton>
@@ -93,6 +96,10 @@ const CouponCard = () => {
           Sử dụng ngay
         </Button>
       </Paper>
+      <CouponDetail
+        open={openDetail}
+        handleClose={() => setOpenDetail(false)}
+      />
     </div>
   );
 };
