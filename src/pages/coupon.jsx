@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Paper, Typography } from "@material-ui/core";
+import { Box, Grid, Paper, Typography } from "@material-ui/core";
+import CouponCard from "../components/CouponCard";
 
 const useStyles = makeStyles((theme) => ({
   contentWrapper: {
@@ -70,6 +71,19 @@ const Coupon = () => {
             hoặc các chương trình khuyến mãi của Pizza Hut!
           </Typography>
         </Box>
+        <Grid
+          container
+          justifyContent="space-evenly"
+          spacing={3}
+          style={{ paddingTop: "1rem" }}
+        >
+          <Grid item xs={12} sm={5}>
+            <CouponCard />
+          </Grid>
+          <Grid item xs={12} sm={5}>
+            <CouponCard />
+          </Grid>
+        </Grid>
       </Paper>
     </Box>
   );
